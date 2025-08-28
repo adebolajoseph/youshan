@@ -1,0 +1,39 @@
+{
+  "name": "youshan-token-website",
+  "version": "1.0.0",
+  "description": "A modern website for the YOUSHAN cryptocurrency token on Solana blockchain",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'No build process needed for static site'"
+  },
+  "keywords": [
+    "youshan",
+    "cryptocurrency",
+    "token",
+    "solana",
+    "blockchain",
+    "defi",
+    "homunculus-dog",
+    "dex-screener",
+    "website",
+    "responsive",
+    "modern"
+  ],
+  "author": "YOUSHAN Token Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youshan/youshan-token-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/youshan/youshan-token-website/issues"
+  },
+  "homepage": "https://youshan.fun",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

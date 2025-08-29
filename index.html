@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>$YOUSHAN — Homunculus Dog (Demo)</title>
+  <title>$YOUSHAN — Homunculus Dog</title>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
   <style>
     :root{
       --bg:#0e0f13;
@@ -171,10 +172,44 @@
     }
 
     /* About */
-    .about-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:22px}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 22px;
+    }
+
     @media (max-width:1024px){.about-grid{grid-template-columns:1fr}}
-    .card{background:var(--panel);border:1px solid #ffffff1a;border-radius:16px;padding:18px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
-    .card.gold-outline{border:2px solid rgba(243,189,62,.4);box-shadow:0 0 0 2px rgba(243,189,62,.12) inset}
+    .card {
+      background: var(--panel);
+      border: 1px solid #ffffff1a;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.3);
+      align-self: start; /* 👈 THIS LINE fixes the height */
+    }
+
+    .card.gold-outline {
+      background: linear-gradient(to bottom, #1c1c1c, #3a2e0e); /* matching gradient */
+      border: 2px solid #f9b32f; /* solid gold border */
+      border-radius: 16px;
+      padding: 22px;
+      color: #fff;
+      text-align: left;
+      line-height: 1.6;
+      box-shadow: 0 0 0 2px rgba(243,189,62,0.15) inset, 0 4px 18px rgba(0,0,0,0.5);
+    }
+
+    .card.gold-outline h3 {
+      color: #f9b32f;
+      font-family: "Russo One", sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
     .card h3{margin:0 0 8px;font-family:"Russo One";font-size:18px;letter-spacing:.18em;color:var(--gold)}
     .card p{margin:0;color:var(--muted)}
     .about-center{background:linear-gradient(180deg,#c49a47,#a67e31 40%,#8e6b2b 100%);border-radius:16px;padding:0;border:2px solid rgba(243,189,62,.45)}
@@ -289,7 +324,7 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-img">
-          <img src="images/hero.jpg" alt="Fluffy one-eyed pomeranian style hero" />
+          <img src="images/IMG_8642.JPG" alt="Fluffy one-eyed pomeranian style hero" />
         </div>
         <div class="hero-content">
           <div class="eyebrow">THE</div>
@@ -312,24 +347,77 @@
           <p>The viral "one-eye illusion" dog from X/Reddit & Douyin—it's a fluff ball whose face hides behind fur, making it look like one eye at first glance. Internet memed it as everything from a homunculus to a sea urchin.</p>
         </div>
         <div class="about-center">
-          <img src="images/about-center.jpg" alt="Youshan thinking at a laptop" />
+          <img src="images/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
         </div>
         <div class="card gold-outline">
           <h3>MEME FUEL</h3>
           <p>Pure optical-illusion energy. This little fluff doesn't try—it stares, and the internet falls in love. Shareable, irresistible, meme gold.</p>
         </div>
-      </div>
-      <div class="stats">
-        <div class="stat">
-          <h4>CLOUT LEVEL</h4>
-          <div class="big">99</div>
-        </div>
-        <div class="stat">
-          <h4>MEME INDEX</h4>
-          <div class="big infty">∞</div>
+        <!-- Stats moved inside about-grid, below the cards -->
+        <div class="stats" style="grid-column: 1 / span 3;">
+          <div class="stat">
+            <h4>CLOUT LEVEL</h4>
+            <div class="big">99</div>
+          </div>
+          <div class="stat">
+            <h4>MEME INDEX</h4>
+            <div class="big infty">∞</div>
+          </div>
         </div>
       </div>
     </section>
+<h2 class="section-title">Where $YOUSHAN is Listed</h2>
+<section class="listed-on">
+  <div class="exchange-grid">
+
+    <a class="exchange-card" href="https://dexscreener.com/solana/7go93rpqEcRDx3yPHBaYwWHUo533MVzxVSr7Q3WdAwwM" target="_blank">
+      <img src="logos/Dexscreener.png" alt="Dexscreener">
+      <p>Dexscreener</p>
+    </a>
+
+    <a class="exchange-card" href="https://gmgn.ai/sol/token/8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pump" target="_blank">
+      <img src="logos/gmgn.png" alt="Gmgn">
+      <p>Gmgn</p>
+    </a>
+
+    <a class="exchange-card" href="https://www.dextools.io/app/en/solana/pair-explorer/7go93rpqEcRDx3yPHBaYwWHUo533MVzxVSr7Q3WdAwwM" target="_blank">
+      <img src="logos/dextools.png" alt="Dextools">
+      <p>Dextools</p>
+    </a>
+
+    <a class="exchange-card" href="https://pump.fun/8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pump" target="_blank">
+      <img src="logos/pump.fun.jpg" alt="Pump.fun">
+      <p>Pump.fun</p>
+    </a>
+
+    <a class="exchange-card" href="https://www.gate.com/alpha/sol-8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pumpm" target="_blank">
+      <img src="logos/gatealpha.png" alt="Gatealpha">
+      <p>Gatealpha</p>
+    </a>
+
+    <a class="exchange-card" href="https://moontok.io/coins/homunculus-dog" target="_blank">
+      <img src="logos/moontok.jpg" alt="Moontok">
+      <p>Moontok</p>
+    </a>
+
+    <a class="exchange-card" href="https://coinmarketcap.com/dexscan/Solana/7go93rpqEcRDx3yPHBaYwWHUo533MVzxVSr7Q3WdAwwM/" target="_blank">
+      <img src="logos/coinmarketcap.jpg" alt="Coinmarketcap">
+      <p>Coinmarketcap</p>
+    </a>
+
+    <a class="exchange-card" href="https://jup.ag/tokens/8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pump" target="_blank">
+      <img src="logos/jupiter2.jpg" alt="Jupiter">
+      <p>Jupiter</p>
+    </a>
+
+    <a class="exchange-card" href="https://birdeye.so/solana/token/8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pump" target="_blank">
+      <img src="logos/birdeye.png" alt="Birdeye">
+      <p>Birdeye</p>
+    </a>
+
+  </div>
+</section>
+
 
     <!-- Gallery: YOUSHERY - Automatic Slider -->
     <div class="gallery-section">

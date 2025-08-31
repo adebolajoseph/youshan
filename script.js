@@ -368,3 +368,195 @@ rippleStyle.textContent = `
     }
 `;
 document.head.appendChild(rippleStyle);
+
+// ===== MOBILE RESPONSIVE ENHANCEMENTS =====
+
+// Mobile-specific improvements
+function isMobile() {
+    return window.innerWidth <= 768 || 'ontouchstart' in window;
+}
+
+// Enhanced touch interactions for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    // Improve button touch targets for mobile
+    const buttons = document.querySelectorAll('.btn, .chip, .tokenomics-btn');
+    buttons.forEach(button => {
+        // Add touch feedback
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+            this.style.transition = 'transform 0.1s ease';
+        });
+        
+        button.addEventListener('touchend', function() {
+            this.style.transform = '';
+            this.style.transition = 'transform 0.1s ease';
+        });
+        
+        // Ensure minimum touch target size
+        if (isMobile()) {
+            button.style.minHeight = '44px';
+            button.style.minWidth = '44px';
+        }
+    });
+
+    // Add swipe functionality for slider (if exists)
+    const slider = document.querySelector('.slider');
+    if (slider) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                // Trigger custom event for swipe
+                const swipeEvent = new CustomEvent('sliderSwipe', {
+                    detail: { direction: diff > 0 ? 'left' : 'right' }
+                });
+                slider.dispatchEvent(swipeEvent);
+            }
+        }
+
+        slider.addEventListener('touchstart', handleTouchStart, { passive: true });
+        slider.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+
+    // Prevent zoom on double tap (iOS)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // Add mobile-specific scroll behavior
+    if (isMobile()) {
+        // Smooth scrolling for mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Optimize animations for mobile
+        const animatedElements = document.querySelectorAll('.feature, .tokenomics-card, .timeline-item');
+        animatedElements.forEach(el => {
+            el.style.willChange = 'transform, opacity';
+        });
+    }
+
+    // Handle orientation change
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            // Recalculate layouts after orientation change
+            window.dispatchEvent(new Event('resize'));
+        }, 100);
+    });
+
+    // Mobile-specific performance optimizations
+    if (isMobile()) {
+        // Reduce animation complexity on mobile
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                .crypto-cursor {
+                    display: none !important;
+                }
+                
+                .price-ticker {
+                    font-size: 0.8rem;
+                    padding: 6px 0;
+                }
+                
+                .ticker-content {
+                    gap: 1rem;
+                }
+                
+                /* Optimize animations for mobile */
+                * {
+                    -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+                }
+                
+                /* Reduce particle effects on mobile */
+                .crypto-particles {
+                    opacity: 0.3;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
+
+// Enhanced mobile navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add mobile menu toggle if hamburger exists
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+// Mobile-specific loading optimizations
+window.addEventListener('load', () => {
+    if (isMobile()) {
+        // Optimize images for mobile
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+        });
+        
+        // Reduce animation duration on mobile for better performance
+        const animatedElements = document.querySelectorAll('[style*="animation"]');
+        animatedElements.forEach(el => {
+            const currentAnimation = el.style.animation;
+            if (currentAnimation) {
+                el.style.animation = currentAnimation.replace(/\d+s/g, (match) => {
+                    const duration = parseFloat(match);
+                    return Math.min(duration * 0.7, 1) + 's';
+                });
+            }
+        });
+    }
+});

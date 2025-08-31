@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>$YOUSHAN — Homunculus Dog</title>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -279,18 +279,27 @@
 
 @media (max-width: 768px) {
   .about-grid {
-    grid-template-columns: 1fr;   /* stack everything in one column */
-    grid-template-rows: auto;     /* let rows flow naturally */
+    display: flex;
+    flex-direction: column-reverse;   /* Let rows flow naturally */
+    gap: 20px;
+    width: 100%;
   }
 
   .about-center {
     grid-column: 1 / -1;
-    grid-row: auto;
+    grid-row: 1; /* Image comes first */
+    order: 1;
+    width: 100%;
   }
 
-  .card,
-  .stat {
+  .card {
     grid-column: 1 / -1;
+    width: 100%;
+  }
+  
+  /* Hide stat cards on mobile */
+  .stat {
+    display: none !important;
   }
 }
 
@@ -377,6 +386,324 @@
         aspect-ratio: 4/3;
       }
     }
+
+    /* ===== MOBILE RESPONSIVE IMPROVEMENTS ===== */
+    
+    /* Mobile-first responsive design */
+    @media (max-width: 768px) {
+      /* General mobile adjustments */
+      .wrap {
+        padding: 16px 12px 40px;
+      }
+      
+      /* Top bar mobile */
+      .brand {
+        height: 48px;
+        gap: 8px;
+      }
+      
+      .brand b {
+        font-size: 16px;
+      }
+      
+      .nav-mini {
+        gap: 6px;
+      }
+      
+      .chip {
+        padding: 6px 10px;
+        font-size: 11px;
+        gap: 6px;
+      }
+      
+      /* Hero mobile */
+      .hero {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 20px;
+      }
+      
+      .hero-grid {
+        gap: 24px;
+      }
+      
+      .hero-img {
+        border-radius: 16px;
+      }
+      
+      .title {
+        font-size: clamp(28px, 8vw, 42px);
+        line-height: 1.1;
+      }
+      
+      .lead {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+      
+      .cta-row {
+        gap: 10px;
+        margin-top: 12px;
+      }
+      
+      .btn {
+        padding: 14px 18px;
+        font-size: 15px;
+        min-height: 48px; /* Better touch target */
+      }
+      
+      /* Section titles mobile */
+      .section-title {
+        margin: 32px 0 12px;
+        font-size: clamp(22px, 6vw, 28px);
+        text-shadow: 
+          -1px -1px 0 #FFA500,
+          1px -1px 0 #FFA500,
+          -1px 1px 0 #FFA500,
+          1px 1px 0 #FFA500,
+          0 0 6px rgba(255,165,0,0.3);
+      }
+      
+      /* About section mobile */
+      .about-grid {
+        gap: 16px;
+      }
+      
+      .card,
+      .card.gold-outline {
+        padding: 16px;
+        border-radius: 12px;
+        height: 320px;
+      }
+      
+      .card.gold-outline h3,
+      .card h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      
+      .card p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      
+      .stat {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      
+      .stat h4 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      
+      .big {
+        font-size: clamp(48px, 15vw, 72px);
+      }
+      
+      .infty {
+        font-size: clamp(40px, 15vw, 72px);
+      }
+      
+      /* Gallery mobile */
+      .gallery-section {
+        margin: 32px 0;
+      }
+      
+      .gallery-title {
+        font-size: clamp(20px, 5vw, 24px);
+        margin-bottom: 12px;
+        text-shadow: 
+          -1px -1px 0 #FFA500,
+          1px -1px 0 #FFA500,
+          -1px 1px 0 #FFA500,
+          1px 1px 0 #FFA500,
+          0 0 6px rgba(255,165,0,0.3);
+      }
+      
+      .slider-container {
+        border-radius: 12px;
+        border-width: 1px;
+      }
+      
+      .slider-dots {
+        margin-top: 12px;
+        gap: 6px;
+      }
+      
+      .dot {
+        width: 6px;
+        height: 6px;
+      }
+    }
+    
+    /* Small mobile devices */
+    @media (max-width: 480px) {
+      .wrap {
+        padding: 12px 8px 32px;
+      }
+      
+      .brand {
+        height: 44px;
+      }
+      
+      .brand b {
+        font-size: 14px;
+      }
+      
+      .nav-mini {
+        gap: 4px;
+      }
+      
+      .chip {
+        padding: 5px 8px;
+        font-size: 10px;
+        gap: 4px;
+      }
+      
+      .hero {
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 16px;
+      }
+      
+      .hero-grid {
+        gap: 20px;
+      }
+      
+      .title {
+        font-size: clamp(24px, 9vw, 32px);
+      }
+      
+      .lead {
+        font-size: 14px;
+      }
+      
+      .btn {
+        padding: 12px 16px;
+        font-size: 14px;
+        min-height: 44px;
+      }
+      
+      .section-title {
+        margin: 24px 0 10px;
+        font-size: clamp(20px, 7vw, 24px);
+      }
+      
+      .about-grid {
+        gap: 12px;
+      }
+      
+      .card,
+      .card.gold-outline {
+        padding: 14px;
+        border-radius: 10px;
+      }
+      
+      .card.gold-outline h3,
+      .card h3 {
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .card p {
+        font-size: 13px;
+      }
+      
+      .stat {
+        padding: 14px;
+        border-radius: 10px;
+      }
+      
+      .stat h4 {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      
+      .big {
+        font-size: clamp(36px, 18vw, 56px);
+      }
+      
+      .infty {
+        font-size: clamp(32px, 18vw, 56px);
+      }
+      
+      .gallery-section {
+        margin: 24px 0;
+      }
+      
+      .gallery-title {
+        font-size: clamp(18px, 6vw, 20px);
+        margin-bottom: 10px;
+      }
+      
+      .slider-container {
+        border-radius: 10px;
+      }
+      
+      .slider-dots {
+        margin-top: 10px;
+        gap: 5px;
+      }
+      
+      .dot {
+        width: 5px;
+        height: 5px;
+      }
+    }
+    
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+      .btn {
+        min-height: 48px;
+        padding: 14px 20px;
+      }
+      
+      .chip {
+        min-height: 36px;
+        padding: 8px 14px;
+      }
+      
+      .dot {
+        min-width: 12px;
+        min-height: 12px;
+      }
+    }
+    
+    /* Landscape mobile adjustments */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      
+      .hero-img {
+        aspect-ratio: 4/3;
+      }
+      
+      .title {
+        font-size: clamp(20px, 4vw, 28px);
+      }
+      
+      .lead {
+        font-size: 13px;
+      }
+      
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      
+      .about-center {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+      
+      .card,
+      .stat {
+        grid-column: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -396,7 +723,7 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-img">
-          <img src="images/IMG_8643.JPG" alt="Fluffy one-eyed pomeranian style hero" />
+          <img src="images/memes/IMG_8643.JPG" alt="Fluffy one-eyed pomeranian style hero" />
         </div>
         <div class="hero-content">
           <div class="eyebrow">THE</div>
@@ -424,7 +751,7 @@
   </div>
 
   <div class="about-center" style="grid-column: 2 / 3; grid-row: 1 / 3;">
-    <img src="images/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
+    <img src="images/memes/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
   </div>
 
   <div class="card gold-outline" style="grid-column: 3 / 4; grid-row: 1;">
@@ -550,14 +877,12 @@
       <div class="gallery-title">YOUSHERY</div>
       <div class="slider-container">
         <div class="slider" id="slider">
-          <div class="slider-item"><img src="images/BeFunky-collage.jpg" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
           <!-- Duplicate for seamless loop -->
-          <div class="slider-item"><img src="images/BeFunky-collage.jpg" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          
         </div>
       </div>
-      <div class="slider-dots" id="sliderDots">
-        <!-- Dots will be generated by JavaScript -->
-      </div>
+     
     </div>
   </main>
 

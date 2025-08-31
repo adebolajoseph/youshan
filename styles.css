@@ -334,3 +334,47 @@ img {
   height: auto;
   display: block;
 }
+
+.gallery-section {
+  width: 100%;
+  padding: 48px 0;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.gallery-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-family: "Russo One";
+  font-size: clamp(24px, 4vw, 32px);
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 
+    -2px -2px 0 #FFA500,
+    2px -2px 0 #FFA500,
+    -2px 2px 0 #FFA500,
+    2px 2px 0 #FFA500,
+    0 0 8px rgba(255,165,0,0.3);
+}
+
+/* 🔁 Scrollable wrapper */
+.image-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 🖼️ Image itself */
+.image-scroll-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 👇 Optional: on small screens, allow horizontal scroll */
+@media (max-width: 768px) {
+  .image-scroll-wrapper img {
+    width: 1200px; /* or whatever the full image size is */
+    max-width: none;
+  }
+}

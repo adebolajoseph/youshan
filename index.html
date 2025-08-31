@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>$YOUSHAN — Homunculus Dog</title>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="style.css">
+
   <style>
     :root{
       --bg:#0e0f13;
@@ -172,56 +173,127 @@
     }
 
     /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 22px;
-    }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px; /* adds breathing space */
+}
 
-    @media (max-width:1024px){.about-grid{grid-template-columns:1fr}}
-    .card {
-      background: var(--panel);
-      border: 1px solid #ffffff1a;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.3);
-      align-self: start; /* 👈 THIS LINE fixes the height */
-    }
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-    .card.gold-outline {
-      background: linear-gradient(to bottom, #1c1c1c, #3a2e0e); /* matching gradient */
-      border: 2px solid #f9b32f; /* solid gold border */
-      border-radius: 16px;
-      padding: 22px;
-      color: #fff;
-      text-align: left;
-      line-height: 1.6;
-      box-shadow: 0 0 0 2px rgba(243,189,62,0.15) inset, 0 4px 18px rgba(0,0,0,0.5);
-    }
+.card {
+  background: var(--panel);
+  border: 1px solid #ffffff1a;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.3);
+  align-self: start;
+}
 
-    .card.gold-outline h3 {
-      color: #f9b32f;
-      font-family: "Russo One", sans-serif;
-      font-weight: 800;
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
-    }
+.card.gold-outline {
+  background: linear-gradient(to bottom, #1c1c1c, #3a2e0e);
+  border: 2px solid #f9b32f;
+  border-radius: 16px;
+  padding: 22px;
+  color: #fff;
+  text-align: left;
+  line-height: 1.6;
+  box-shadow: 0 0 0 2px rgba(243,189,62,0.15) inset, 
+              0 4px 18px rgba(0,0,0,0.5);
+}
 
-    .card h3{margin:0 0 8px;font-family:"Russo One";font-size:18px;letter-spacing:.18em;color:var(--gold)}
-    .card p{margin:0;color:var(--muted)}
-    .about-center{background:linear-gradient(180deg,#c49a47,#a67e31 40%,#8e6b2b 100%);border-radius:16px;padding:0;border:2px solid rgba(243,189,62,.45)}
-    .about-center img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.card.gold-outline h3 {
+  color: #f9b32f;
+  font-family: "Russo One", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
 
-    /* Stats */
-    .stats{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
-    @media (max-width:1024px){.stats{grid-template-columns:1fr}}
-    .stat{background:linear-gradient(180deg, #f7d06a, #e3b447);color:#1b1305;border-radius:16px;border:2px solid rgba(243,189,62,.6);padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;box-shadow:0 16px 44px rgba(243,189,62,.25)}
-    .stat h4{margin:0 0 10px;font-family:"Russo One";letter-spacing:.18em;font-size:18px}
-    .big{font-family:"Russo One";font-size:clamp(72px,12vw,120px);line-height:1;text-shadow:0 6px 0 rgba(0,0,0,.15),0 10px 28px rgba(0,0,0,.25)}
-    .infty{font-size:clamp(60px,12vw,120px)}
+.card h3 {
+  margin: 0 0 8px;
+  font-family: "Russo One";
+  font-size: 18px;
+  letter-spacing: .18em;
+  color: var(--gold);
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.about-center {
+  background: linear-gradient(180deg,#c49a47,#a67e31 40%,#8e6b2b 100%);
+  border-radius: 16px;
+  padding: 0;
+  border: 2px solid rgba(243,189,62,.45);
+}
+
+.about-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* Stats */
+.stat {
+  background: linear-gradient(180deg, #f7d06a, #e3b447);
+  color: #1b1305;
+  border-radius: 16px;
+  border: 2px solid rgba(243,189,62,.6);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0 16px 44px rgba(243,189,62,.25);
+}
+
+.stat h4 {
+  margin: 0 0 10px;
+  font-family: "Russo One";
+  letter-spacing: .18em;
+  font-size: 18px;
+}
+
+.big {
+  font-family: "Russo One";
+  font-size: clamp(72px, 12vw, 120px);
+  line-height: 1;
+  text-shadow: 0 6px 0 rgba(0,0,0,.15),
+               0 10px 28px rgba(0,0,0,.25);
+}
+
+.infty {
+  font-size: clamp(60px, 12vw, 120px);
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;   /* stack everything in one column */
+    grid-template-rows: auto;     /* let rows flow naturally */
+  }
+
+  .about-center {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .card,
+  .stat {
+    grid-column: 1 / -1;
+  }
+}
+
 
     /* Gallery: YOUSHERY - Automatic Slider */
     .gallery-section{margin:48px 0}
@@ -324,7 +396,7 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-img">
-          <img src="images/IMG_8642.JPG" alt="Fluffy one-eyed pomeranian style hero" />
+          <img src="images/IMG_8643.JPG" alt="Fluffy one-eyed pomeranian style hero" />
         </div>
         <div class="hero-content">
           <div class="eyebrow">THE</div>
@@ -338,34 +410,45 @@
       </div>
     </section>
 
-    <!-- About -->
-    <h2 class="section-title">About $YOUSHAN</h2>
-    <section>
-      <div class="about-grid">
-        <div class="card gold-outline">
-          <h3>STORY</h3>
-          <p>The viral "one-eye illusion" dog from X/Reddit & Douyin—it's a fluff ball whose face hides behind fur, making it look like one eye at first glance. Internet memed it as everything from a homunculus to a sea urchin.</p>
-        </div>
-        <div class="about-center">
-          <img src="images/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
-        </div>
-        <div class="card gold-outline">
-          <h3>MEME FUEL</h3>
-          <p>Pure optical-illusion energy. This little fluff doesn't try—it stares, and the internet falls in love. Shareable, irresistible, meme gold.</p>
-        </div>
-        <!-- Stats moved inside about-grid, below the cards -->
-        <div class="stats" style="grid-column: 1 / span 3;">
-          <div class="stat">
-            <h4>CLOUT LEVEL</h4>
-            <div class="big">99</div>
-          </div>
-          <div class="stat">
-            <h4>MEME INDEX</h4>
-            <div class="big infty">∞</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<h2 class="section-title">ABOUT $YOUSHAN</h2>
+<div class="about-grid">
+  <!-- Row 1 -->
+  <div class="card gold-outline" style="grid-column: 1 / 2; grid-row: 1;">
+    <h3>STORY</h3>
+    <p>
+      The viral dog on X & Reddit, 31M views on X. Originally from Douyin
+      (Chinese TikTok). It's so fluffy he’s a ball, with a snout that looks like one big eye.
+      <br><br>
+      Memed as an FMA homunculus or even a sea urchin.
+    </p>
+  </div>
+
+  <div class="about-center" style="grid-column: 2 / 3; grid-row: 1 / 3;">
+    <img src="images/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
+  </div>
+
+  <div class="card gold-outline" style="grid-column: 3 / 4; grid-row: 1;">
+    <h3>MEME FUEL</h3>
+    <p>
+      This meme came from pure optical illusion of a dog with fluffy fur, what could be better than this?
+      <br><br>
+      Youshan is such a cutie, the kind of dog that doesn’t even need to try. Just sitting there looking like a fluffy little ball with one big eye illusion and already stealing the whole internet’s heart.
+    </p>
+  </div>
+
+  <!-- Row 2 (stats directly under story + meme fuel) -->
+  <div class="stat" style="grid-column: 1 / 2; grid-row: 2;">
+    <h4>CLOUT LEVEL</h4>
+    <div class="big">99</div>
+  </div>
+
+  <div class="stat" style="grid-column: 3 / 4; grid-row: 2;">
+    <h4>MEME INDEX</h4>
+    <div class="big infty">∞</div>
+  </div>
+</div>
+
+
 <h2 class="section-title">Where $YOUSHAN is Listed</h2>
 <section class="listed-on">
   <div class="exchange-grid">
@@ -391,7 +474,7 @@
     </a>
 
     <a class="exchange-card" href="https://www.gate.com/alpha/sol-8WZs63wKVQg9DcaWCDyrZ26ED93bnTc1pHrx7Es8pumpm" target="_blank">
-      <img src="logos/gatealpha.png" alt="Gatealpha">
+      <img src="logos/gatealpha.jpg" alt="Gatealpha">
       <p>Gatealpha</p>
     </a>
 
@@ -418,15 +501,58 @@
   </div>
 </section>
 
+<section id="tokenomics" class="tokenomics-section">
+  <div class="tokenomics-container">
+    <!-- Left Side: Tokenomics Info -->
+    <div class="tokenomics-text">
+      <h2 class="tokenomics-title">TOKENOMICS</h2>
+      <p><strong>Contract Address:</strong></p>
+      <div class="contract-box">
+        <span id="contract-address">8WZs63wKVQg9DcaWCDJrZ26ED93bnTc1pHrx7Es8pump</span>
+        <button class="tokenomics-btn">COPY</button>
+      </div>
+      <p><strong>Total Supply:</strong> 999,800,017</p>
+      
+    </div>
+
+    <!-- Right Side: Image -->
+    <div class="tokenomics-image">
+      <img src="images/IMG_8644.JPG" alt="Tokenomics Illustration">
+    </div>
+  </div>
+</section>
+
+<!-- Add below your tokenomics section in index.html -->
+<h2 class="section-title">How to Buy $YOUSHAN</h2>
+<section class="how-to-buy">
+  <div class="how-to-grid">
+    <div class="how-to-card">
+      <h3>1. Get a Solana Wallet</h3>
+      <p>Download and set up a wallet like Phantom or Solflare. Save your recovery phrase securely.</p>
+    </div>
+    <div class="how-to-card">
+      <h3>2. Fund Your Wallet</h3>
+      <p>Buy SOL on an exchange (Binance, Coinbase, etc.) and transfer it to your wallet address.</p>
+    </div>
+    <div class="how-to-card">
+      <h3>3. Connect to DEX</h3>
+      <p>Go to Jupiter, Birdeye, or Pump.fun and connect your wallet to the site.</p>
+    </div>
+    <div class="how-to-card">
+      <h3>4. Swap for $YOUSHAN</h3>
+      <p>Paste the contract address, choose $YOUSHAN, and swap your SOL for $YOUSHAN tokens.</p>
+    </div>
+  </div>
+</section>
 
     <!-- Gallery: YOUSHERY - Automatic Slider -->
     <div class="gallery-section">
       <div class="gallery-title">YOUSHERY</div>
       <div class="slider-container">
         <div class="slider" id="slider">
-          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          <div class="slider-item"><img src="images/BeFunky-collage.jpg" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
           <!-- Duplicate for seamless loop -->
-          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          <div class="slider-item"><img src="images/BeFunky-collage.jpg" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
         </div>
       </div>
       <div class="slider-dots" id="sliderDots">

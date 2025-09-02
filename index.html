@@ -4,717 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>$YOUSHAN — Homunculus Dog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 
-  <style>
-    :root{
-      --bg:#0e0f13;
-      --panel:#14161c;
-      --panel-2:#1a1d24;
-      --text:#eceff6;
-      --muted:#a7afbf;
-      --gold:#f3bd3e;
-      --gold-d:#c9961f;
-      --border:#e1b84d44;
-      --radius-lg:28px;
-      --max:1120px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
-      background:
-        radial-gradient(900px 500px at 10% -10%, rgba(243,189,62,.06), transparent 60%),
-        radial-gradient(900px 500px at 100% 10%, rgba(243,189,62,.04), transparent 60%),
-        var(--bg);
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:var(--max);margin:0 auto;padding:24px 20px 60px}
-
-    /* Top bar */
-    .topbar{position:sticky;top:0;z-index:40;background:rgba(14,15,19,.75);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #ffffff0f}
-    .brand{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand b{font-family:"Russo One";font-size:18px;letter-spacing:.5px}
-    .nav-mini{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--gold);
-      color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.2px;
-      box-shadow:0 0 0 2px #f3bd3e1a inset;
-      background:linear-gradient(180deg, rgba(243,189,62,.08), rgba(243,189,62,.02));
-    }
-    .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
-
-    /* Hero - Updated to match the image exactly */
-    .hero{
-      margin-top:28px;
-      border-radius:var(--radius-lg);
-      border:2px solid var(--gold);
-      padding:28px;
-      background:linear-gradient(180deg, #111318, var(--panel-2));
-      box-shadow:0 14px 40px rgba(0,0,0,.45)
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center
-    }
-    @media (max-width:950px){.hero-grid{grid-template-columns:1fr}}
-    
-    .hero-img{
-      aspect-ratio:1/1;
-      border-radius:20px;
-      overflow:hidden;
-      background:radial-gradient(60% 60% at 30% 30%, #0b0c10 20%, #151821 60%, #0b0c10 100%);
-      border:1px solid #ffffff12;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .hero-img img{
-      object-fit:cover;
-      width:100%;
-      height:100%;
-      border-radius:20px;
-    }
-    
-    .hero-content{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-    
-    .eyebrow{
-      font-weight:800;
-      letter-spacing:.18em;
-      color:#ffffff66;
-      font-size:12px;
-      text-transform:uppercase;
-    }
-    .title{
-      margin:0;
-      line-height:1.02;
-      font-family:"Russo One";
-      font-size:clamp(34px,6vw,68px);
-      letter-spacing:.5px;
-      text-transform:uppercase;
-      color:var(--text);
-    }
-    .title .accent{
-      color:var(--gold);
-      text-shadow:0 1px 0 #000;
-    }
-    .lead{
-      color:var(--muted);
-      max-width:60ch;
-      margin:0;
-      font-size:16px;
-      line-height:1.5;
-    }
-    .tiny{
-      font-size:13px;
-      color:#9fb0d0;
-      margin:0;
-    }
-    .cta-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:8px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:12px;
-      font-weight:800;
-      letter-spacing:.2px;
-      border:1.5px solid #ffffff14;
-      background:#ffffff07;
-      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-      font-size:14px;
-    }
-    .btn:hover{
-      transform:translateY(-1px);
-      border-color:#ffffff2a;
-    }
-    .btn.gold{
-      background:linear-gradient(180deg, var(--gold), var(--gold-d));
-      color:#0c0c0f;
-      border-color:transparent;
-      box-shadow:0 8px 28px rgba(243,189,62,.35);
-    }
-    .btn.ghost{
-      color:var(--gold);
-      border-color:var(--gold);
-      background:transparent;
-    }
-
-    /* Section titles - Updated with orange outline */
-    .section-title{
-      margin:48px 0 16px;
-      font-family:"Russo One";
-      font-size:clamp(26px,4vw,38px);
-      text-transform:uppercase;
-      letter-spacing:.04em;
-      color:var(--text);
-      text-shadow: 
-        -2px -2px 0 #FFA500,
-        2px -2px 0 #FFA500,
-        -2px 2px 0 #FFA500,
-        2px 2px 0 #FFA500,
-        0 0 8px rgba(255,165,0,0.3);
-    }
-
-    /* About */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 20px; /* adds breathing space */
-}
-
-@media (max-width: 1024px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card {
-  background: var(--panel);
-  border: 1px solid #ffffff1a;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 10px 24px rgba(0,0,0,.3);
-  align-self: start;
-}
-
-.card.gold-outline {
-  background: linear-gradient(to bottom, #1c1c1c, #3a2e0e);
-  border: 2px solid #f9b32f;
-  border-radius: 16px;
-  padding: 22px;
-  color: #fff;
-  text-align: left;
-  line-height: 1.6;
-  box-shadow: 0 0 0 2px rgba(243,189,62,0.15) inset, 
-              0 4px 18px rgba(0,0,0,0.5);
-}
-
-.card.gold-outline h3 {
-  color: #f9b32f;
-  font-family: "Russo One", sans-serif;
-  font-weight: 800;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
-}
-
-.card h3 {
-  margin: 0 0 8px;
-  font-family: "Russo One";
-  font-size: 18px;
-  letter-spacing: .18em;
-  color: var(--gold);
-}
-
-.card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.about-center {
-  background: linear-gradient(180deg,#c49a47,#a67e31 40%,#8e6b2b 100%);
-  border-radius: 16px;
-  padding: 0;
-  border: 2px solid rgba(243,189,62,.45);
-}
-
-.about-center img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 14px;
-}
-
-/* Stats */
-.stat {
-  background: linear-gradient(180deg, #f7d06a, #e3b447);
-  color: #1b1305;
-  border-radius: 16px;
-  border: 2px solid rgba(243,189,62,.6);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  box-shadow: 0 16px 44px rgba(243,189,62,.25);
-}
-
-.stat h4 {
-  margin: 0 0 10px;
-  font-family: "Russo One";
-  letter-spacing: .18em;
-  font-size: 18px;
-}
-
-.big {
-  font-family: "Russo One";
-  font-size: clamp(72px, 12vw, 120px);
-  line-height: 1;
-  text-shadow: 0 6px 0 rgba(0,0,0,.15),
-               0 10px 28px rgba(0,0,0,.25);
-}
-
-.infty {
-  font-size: clamp(60px, 12vw, 120px);
-}
-
-@media (max-width: 768px) {
-  .about-grid {
-    display: flex;
-    flex-direction: column-reverse;   /* Let rows flow naturally */
-    gap: 20px;
-    width: 100%;
-  }
-
-  .about-center {
-    grid-column: 1 / -1;
-    grid-row: 1; /* Image comes first */
-    order: 1;
-    width: 100%;
-  }
-
-  .card {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-  
-  /* Hide stat cards on mobile */
-  .stat {
-    display: none !important;
-  }
-}
-
-
-    /* Gallery: YOUSHERY - Automatic Slider */
-    .gallery-section{margin:48px 0}
-    .gallery-title{
-      text-align:center;
-      margin-bottom:16px;
-      font-family:"Russo One";
-      font-size:clamp(24px,4vw,32px);
-      text-transform:uppercase;
-      color:var(--text);
-      text-shadow: 
-        -2px -2px 0 #FFA500,
-        2px -2px 0 #FFA500,
-        -2px 2px 0 #FFA500,
-        2px 2px 0 #FFA500,
-        0 0 8px rgba(255,165,0,0.3);
-    }
-    
-    .slider-container {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      border-radius: 16px;
-      background: var(--panel);
-      border: 2px solid var(--gold);
-      aspect-ratio: 16/9;
-    }
-    
-    .slider {
-      display: flex;
-      transition: transform 0.8s ease-in-out;
-      width: fit-content;
-      height: 100%;
-    }
-    
-    .slider-item {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--panel);
-    }
-    
-    .slider-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    
-    .slider-item:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Slider navigation dots */
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(243,189,62,.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .dot.active {
-      background: var(--gold);
-      transform: scale(1.2);
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .slider-container {
-        aspect-ratio: 4/3;
-      }
-    }
-
-    /* ===== MOBILE RESPONSIVE IMPROVEMENTS ===== */
-    
-    /* Mobile-first responsive design */
-    @media (max-width: 768px) {
-      /* General mobile adjustments */
-      .wrap {
-        padding: 16px 12px 40px;
-      }
-      
-      /* Top bar mobile */
-      .brand {
-        height: 48px;
-        gap: 8px;
-      }
-      
-      .brand b {
-        font-size: 16px;
-      }
-      
-      .nav-mini {
-        gap: 6px;
-      }
-      
-      .chip {
-        padding: 6px 10px;
-        font-size: 11px;
-        gap: 6px;
-      }
-      
-      /* Hero mobile */
-      .hero {
-        margin-top: 20px;
-        padding: 20px;
-        border-radius: 20px;
-      }
-      
-      .hero-grid {
-        gap: 24px;
-      }
-      
-      .hero-img {
-        border-radius: 16px;
-      }
-      
-      .title {
-        font-size: clamp(28px, 8vw, 42px);
-        line-height: 1.1;
-      }
-      
-      .lead {
-        font-size: 15px;
-        line-height: 1.4;
-      }
-      
-      .cta-row {
-        gap: 10px;
-        margin-top: 12px;
-      }
-      
-      .btn {
-        padding: 14px 18px;
-        font-size: 15px;
-        min-height: 48px; /* Better touch target */
-      }
-      
-      /* Section titles mobile */
-      .section-title {
-        margin: 32px 0 12px;
-        font-size: clamp(22px, 6vw, 28px);
-        text-shadow: 
-          -1px -1px 0 #FFA500,
-          1px -1px 0 #FFA500,
-          -1px 1px 0 #FFA500,
-          1px 1px 0 #FFA500,
-          0 0 6px rgba(255,165,0,0.3);
-      }
-      
-      /* About section mobile */
-      .about-grid {
-        gap: 16px;
-      }
-      
-      .card,
-      .card.gold-outline {
-        padding: 16px;
-        border-radius: 12px;
-        height: 320px;
-      }
-      
-      .card.gold-outline h3,
-      .card h3 {
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-      
-      .card p {
-        font-size: 14px;
-        line-height: 1.5;
-      }
-      
-      .stat {
-        padding: 16px;
-        border-radius: 12px;
-      }
-      
-      .stat h4 {
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-      
-      .big {
-        font-size: clamp(48px, 15vw, 72px);
-      }
-      
-      .infty {
-        font-size: clamp(40px, 15vw, 72px);
-      }
-      
-      /* Gallery mobile */
-      .gallery-section {
-        margin: 32px 0;
-      }
-      
-      .gallery-title {
-        font-size: clamp(20px, 5vw, 24px);
-        margin-bottom: 12px;
-        text-shadow: 
-          -1px -1px 0 #FFA500,
-          1px -1px 0 #FFA500,
-          -1px 1px 0 #FFA500,
-          1px 1px 0 #FFA500,
-          0 0 6px rgba(255,165,0,0.3);
-      }
-      
-      .slider-container {
-        border-radius: 12px;
-        border-width: 1px;
-      }
-      
-      .slider-dots {
-        margin-top: 12px;
-        gap: 6px;
-      }
-      
-      .dot {
-        width: 6px;
-        height: 6px;
-      }
-    }
-    
-    /* Small mobile devices */
-    @media (max-width: 480px) {
-      .wrap {
-        padding: 12px 8px 32px;
-      }
-      
-      .brand {
-        height: 44px;
-      }
-      
-      .brand b {
-        font-size: 14px;
-      }
-      
-      .nav-mini {
-        gap: 4px;
-      }
-      
-      .chip {
-        padding: 5px 8px;
-        font-size: 10px;
-        gap: 4px;
-      }
-      
-      .hero {
-        margin-top: 16px;
-        padding: 16px;
-        border-radius: 16px;
-      }
-      
-      .hero-grid {
-        gap: 20px;
-      }
-      
-      .title {
-        font-size: clamp(24px, 9vw, 32px);
-      }
-      
-      .lead {
-        font-size: 14px;
-      }
-      
-      .btn {
-        padding: 12px 16px;
-        font-size: 14px;
-        min-height: 44px;
-      }
-      
-      .section-title {
-        margin: 24px 0 10px;
-        font-size: clamp(20px, 7vw, 24px);
-      }
-      
-      .about-grid {
-        gap: 12px;
-      }
-      
-      .card,
-      .card.gold-outline {
-        padding: 14px;
-        border-radius: 10px;
-      }
-      
-      .card.gold-outline h3,
-      .card h3 {
-        font-size: 13px;
-        margin-bottom: 8px;
-      }
-      
-      .card p {
-        font-size: 13px;
-      }
-      
-      .stat {
-        padding: 14px;
-        border-radius: 10px;
-      }
-      
-      .stat h4 {
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-      
-      .big {
-        font-size: clamp(36px, 18vw, 56px);
-      }
-      
-      .infty {
-        font-size: clamp(32px, 18vw, 56px);
-      }
-      
-      .gallery-section {
-        margin: 24px 0;
-      }
-      
-      .gallery-title {
-        font-size: clamp(18px, 6vw, 20px);
-        margin-bottom: 10px;
-      }
-      
-      .slider-container {
-        border-radius: 10px;
-      }
-      
-      .slider-dots {
-        margin-top: 10px;
-        gap: 5px;
-      }
-      
-      .dot {
-        width: 5px;
-        height: 5px;
-      }
-    }
-    
-    /* Touch-friendly improvements */
-    @media (hover: none) and (pointer: coarse) {
-      .btn {
-        min-height: 48px;
-        padding: 14px 20px;
-      }
-      
-      .chip {
-        min-height: 36px;
-        padding: 8px 14px;
-      }
-      
-      .dot {
-        min-width: 12px;
-        min-height: 12px;
-      }
-    }
-    
-    /* Landscape mobile adjustments */
-    @media (max-width: 768px) and (orientation: landscape) {
-      .hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      
-      .hero-img {
-        aspect-ratio: 4/3;
-      }
-      
-      .title {
-        font-size: clamp(20px, 4vw, 28px);
-      }
-      
-      .lead {
-        font-size: 13px;
-      }
-      
-      .about-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      
-      .about-center {
-        grid-column: 1 / -1;
-        grid-row: 1;
-      }
-      
-      .card,
-      .stat {
-        grid-column: auto;
-      }
-    }
-  </style>
 </head>
 <body>
-  <div class="topbar">
+  <div class="">
     <div class="wrap brand">
-      <b>HOMUNCULUS DOG</b>
-      <div class="nav-mini">
+      <!-- <b>HOMUNCULUS DOG</b> -->
+      <!-- <div class="nav-mini">
         <a class="chip" href="#" target="_blank"><span class="dot"></span> DEXSCREENER</a>
         <a class="chip" href="#" target="_blank"><span class="dot"></span> COINGECKO</a>
         <a class="chip" href="#" target="_blank">X</a>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -723,15 +25,21 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-img">
-          <img src="images/memes/IMG_8643.JPG" alt="Fluffy one-eyed pomeranian style hero" />
+          <img src="images/memes/hasbu-main-illustration.png" alt="Fluffy one-eyed pomeranian style hero" />
         </div>
+         
         <div class="hero-content">
-          <div class="eyebrow">THE</div>
+          <div class="nav-mini">
+            <a class="chip" href="#" target="_blank"><span class="dot"></span> DEXSCREENER</a>
+            <a class="chip" href="#" target="_blank"><span class="dot"></span> COINGECKO</a>
+            <a class="chip" href="#" target="_blank">X</a>
+          </div>
+          <div class="title">THE</div>
           <h1 class="title">HOMUNCULUS<br>DOG.<br><span class="accent">$YOUSHAN</span> IS<br>LIVE</h1>
           <p class="lead">A viral black pomeranian, so fluffy it creates the illusion of having just one eye, with over 31M views on x.</p>
           <p class="tiny">Binance?</p>
           <div class="cta-row">
-            <a class="btn gold" href="#">BUY $YOUSHAN</a>
+            <i class="btn gold" href="#">BUY $YOUSHAN</i>
           </div>
         </div>
       </div>
@@ -740,39 +48,44 @@
 <h2 class="section-title">ABOUT $YOUSHAN</h2>
 <div class="about-grid">
   <!-- Row 1 -->
-  <div class="card gold-outline" style="grid-column: 1 / 2; grid-row: 1;">
+   <div style="display: flex; flex-direction: column; gap: 40px;">
+  <div class="card gold-outline">
     <h3>STORY</h3>
     <p>
       The viral dog on X & Reddit, 31M views on X. Originally from Douyin
-      (Chinese TikTok). It's so fluffy he’s a ball, with a snout that looks like one big eye.
+      (Chinese TikTok). It's so fluffy he's a ball, with a snout that looks like one big eye.
       <br><br>
       Memed as an FMA homunculus or even a sea urchin.
     </p>
   </div>
-
-  <div class="about-center" style="grid-column: 2 / 3; grid-row: 1 / 3;">
-    <img src="images/memes/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
-  </div>
-
-  <div class="card gold-outline" style="grid-column: 3 / 4; grid-row: 1;">
-    <h3>MEME FUEL</h3>
-    <p>
-      This meme came from pure optical illusion of a dog with fluffy fur, what could be better than this?
-      <br><br>
-      Youshan is such a cutie, the kind of dog that doesn’t even need to try. Just sitting there looking like a fluffy little ball with one big eye illusion and already stealing the whole internet’s heart.
-    </p>
-  </div>
-
-  <!-- Row 2 (stats directly under story + meme fuel) -->
-  <div class="stat" style="grid-column: 1 / 2; grid-row: 2;">
+  <div class="stat">
     <h4>CLOUT LEVEL</h4>
     <div class="big">99</div>
   </div>
 
-  <div class="stat" style="grid-column: 3 / 4; grid-row: 2;">
+  </div>
+
+  <div class="about-center" >
+    <img src="images/memes/IMG_8664.JPG" alt="Youshan thinking at a laptop" />
+  </div>
+<div style="display: flex; flex-direction: column; gap: 40px;">
+  <div class="card gold-outline">
+    <h3>MEME FUEL</h3>
+    <p>
+      This meme came from pure optical illusion of a dog with fluffy fur, what could be better than this?
+      <br><br>
+      Youshan is such a cutie, the kind of dog that doesn't even need to try. Just sitting there looking like a fluffy little ball with one big eye illusion and already stealing the whole internet's heart.
+    </p>
+  </div>
+
+  <!-- Row 2 (stats directly under story + meme fuel) -->
+  <div class="stat">
     <h4>MEME INDEX</h4>
     <div class="big infty">∞</div>
   </div>
+  </div>
+
+  
 </div>
 
 
@@ -832,7 +145,7 @@
   <div class="tokenomics-container">
     <!-- Left Side: Tokenomics Info -->
     <div class="tokenomics-text">
-      <h2 class="tokenomics-title">TOKENOMICS</h2>
+      <h2 class="section-title">TOKENOMICS</h2>
       <p><strong>Contract Address:</strong></p>
       <div class="contract-box">
         <span id="contract-address">8WZs63wKVQg9DcaWCDJrZ26ED93bnTc1pHrx7Es8pump</span>
@@ -844,7 +157,7 @@
 
     <!-- Right Side: Image -->
     <div class="tokenomics-image">
-      <img src="images/IMG_8644.JPG" alt="Tokenomics Illustration">
+      <img src="images/memes/IMG_8644.JPG" alt="Tokenomics Illustration">
     </div>
   </div>
 </section>
@@ -854,19 +167,19 @@
 <section class="how-to-buy">
   <div class="how-to-grid">
     <div class="how-to-card">
-      <h3>1. Get a Solana Wallet</h3>
+      <h3 style="font-family: 'GeomGraphic', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.18em;">1. Get a Solana Wallet</h3>
       <p>Download and set up a wallet like Phantom or Solflare. Save your recovery phrase securely.</p>
     </div>
     <div class="how-to-card">
-      <h3>2. Fund Your Wallet</h3>
+      <h3 style="font-family: 'GeomGraphic', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.18em;">2. Fund Your Wallet</h3>
       <p>Buy SOL on an exchange (Binance, Coinbase, etc.) and transfer it to your wallet address.</p>
     </div>
     <div class="how-to-card">
-      <h3>3. Connect to DEX</h3>
+      <h3 style="font-family: 'GeomGraphic', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.18em;">3. Connect to DEX</h3>
       <p>Go to Jupiter, Birdeye, or Pump.fun and connect your wallet to the site.</p>
     </div>
     <div class="how-to-card">
-      <h3>4. Swap for $YOUSHAN</h3>
+      <h3 style="font-family: 'GeomGraphic', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.18em;">4. Swap for $YOUSHAN</h3>
       <p>Paste the contract address, choose $YOUSHAN, and swap your SOL for $YOUSHAN tokens.</p>
     </div>
   </div>
@@ -878,87 +191,25 @@
       <div class="slider-container">
         <div class="slider" id="slider">
           <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
-          <!-- Duplicate for seamless loop -->
-          
+          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
+          <div class="slider-item"><img src="images/youshery-collage.png" alt="YOUSHERY Collage - Fluffy black cyclops creature in various crypto scenarios" /></div>
         </div>
+        <div class="slider-dots" id="sliderDots"></div>
       </div>
      
     </div>
   </main>
 
   <script>
-    // Automatic Slider Functionality
+    // Slider dots are now just visual since we use CSS animation
     document.addEventListener('DOMContentLoaded', function() {
-      const slider = document.getElementById('slider');
       const sliderDots = document.getElementById('sliderDots');
-      const items = slider.querySelectorAll('.slider-item');
-      const totalItems = items.length - 1; // Subtract duplicated item
-      let currentIndex = 0;
-      let isTransitioning = false;
-
-      // Create navigation dots
-      for (let i = 0; i < totalItems; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot';
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        sliderDots.appendChild(dot);
-      }
-
-      const dots = sliderDots.querySelectorAll('.dot');
-
-      function updateDots() {
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentIndex);
-        });
-      }
-
-      function goToSlide(index) {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex = index;
-        const translateX = -index * 100; // 100% width for single image display
-        slider.style.transform = `translateX(${translateX}%)`;
-        updateDots();
-        
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 800);
-      }
-
-      function nextSlide() {
-        if (isTransitioning) return;
-        
-        currentIndex++;
-        if (currentIndex >= totalItems) {
-          // Reset to beginning for seamless loop
-          setTimeout(() => {
-            slider.style.transition = 'none';
-            currentIndex = 0;
-            slider.style.transform = 'translateX(0)';
-            updateDots();
-            setTimeout(() => {
-              slider.style.transition = 'transform 0.8s ease-in-out';
-            }, 50);
-          }, 800);
-        } else {
-          goToSlide(currentIndex);
-        }
-      }
-
-      // Auto-advance slider every 4 seconds for large images
-      setInterval(nextSlide, 4000);
-
-      // Pause auto-advance on hover
-      slider.addEventListener('mouseenter', () => {
-        clearInterval(autoAdvance);
-      });
-
-      slider.addEventListener('mouseleave', () => {
-        autoAdvance = setInterval(nextSlide, 4000);
-      });
-
-      let autoAdvance = setInterval(nextSlide, 4000);
+      
+      // Create navigation dots for visual reference
+      const dot = document.createElement('div');
+      dot.className = 'dot active';
+      sliderDots.appendChild(dot);
     });
   </script>
 </body>

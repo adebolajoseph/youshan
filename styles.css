@@ -180,7 +180,7 @@ img {
   padding: 28px;
   background: linear-gradient(0deg, rgba(243, 186, 47, 0.14) 8.82%, rgba(243, 186, 47, 0) 91.53%);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  margin-top: 0; /* or remove this line entirely */
+  margin-top: 20px; /* or remove this line entirely */
 }
 
 
@@ -1239,32 +1239,64 @@ img {
   }
 }
 
+/* Social Section */
 .social-links {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.social-text {
+  font-weight: 100;
+  font-size: large;
+  color: #f7d774; /* Softer yellow */
+  text-shadow:
+    0 0 2px #ffffff,
+    0 0 4px #ffffff;
+}
+
+.social-icons {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin: 48px 0;
+  gap: 22px;
 }
 
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff0a;
-  border: 1px solid #ffffff1a;
-  transition: background 0.2s, transform 0.2s;
+.social-icons a {
+  font-size: 32px;
+  color: #fff;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.social-links a:hover {
-  
+.social-icons a:hover {
+  color: #ffd700;
   transform: translateY(-2px);
 }
 
-.social-links img {
-  width: 24px;
-  height: 24px;
-  filter: invert(1); /* makes icons white */
+
+/* Hide by default (desktop/tablet) */
+.mobile-header {
+  display: none;
+}
+
+/* Show on mobile */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: block;
+    text-align: center;
+    padding: 12px 16px;
+    color: #ffd700;
+    font-family: "Russo One", sans-serif;
+    text-transform: uppercase;
+    background: #111; /* matches your theme */
+    border-bottom: 2px solid #f9b32f;
+  }
+
+  .mobile-header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+
+  .mobile-header p {
+    font-size: 0.9rem;
+    color: #fff;
+  }
 }

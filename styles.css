@@ -88,8 +88,10 @@
 }
 
 html, body {
-  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
 
 body {
   margin: 0;
@@ -115,7 +117,6 @@ img {
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 24px 20px 60px;
 }
 
 /* ===== TOP BAR ===== */
@@ -174,13 +175,14 @@ img {
 
 /* ===== HERO SECTION ===== */
 .hero {
-  /* margin-top: 28px; */
   border-radius: var(--radius-lg);
   border: 1px solid var(--gold);
   padding: 28px;
   background: linear-gradient(0deg, rgba(243, 186, 47, 0.14) 8.82%, rgba(243, 186, 47, 0) 91.53%);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
+  margin-top: 0; /* or remove this line entirely */
 }
+
 
 .hero-grid {
   display: grid;
@@ -459,8 +461,10 @@ img {
 }
 
 /* ===== TOKENOMICS SECTION ===== */
+
 .tokenomics-section {
-  margin: 48px 0;
+  margin: 32px 0; /* Reduced space for compactness */
+  padding: 0 16px; /* Small side padding for mobile */
 }
 
 .tokenomics-container {
@@ -470,20 +474,27 @@ img {
   align-items: center;
 }
 
+/* Override layout when only using the text (no image) */
+.tokenomics-container.single-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.section-title,
 .tokenomics-title {
-  font-family: "Russo One";
-  font-size: clamp(24px,4vw,32px);
+  font-family: "Russo One", sans-serif;
+  font-size: clamp(24px, 4vw, 32px);
   text-transform: uppercase;
   color: var(--text);
   margin-bottom: 20px;
-  text-shadow: 
-    -2px -2px 0 #FFA500,
-    2px -2px 0 #FFA500,
-    -2px 2px 0 #FFA500,
-    2px 2px 0 #FFA500,
-    0 0 8px rgba(255,165,0,0.3);
+  text-stroke: 2px var(--gold);
 }
 
+/* Tokenomics Info Box */
 .contract-box {
   display: flex;
   align-items: center;
@@ -499,7 +510,8 @@ img {
   font-family: monospace;
   font-size: 12px;
   color: var(--text);
-  word-break: break-all;
+  word-break: break-word;
+  flex-grow: 1;
 }
 
 .tokenomics-btn {
@@ -517,12 +529,25 @@ img {
   background: var(--gold-d);
 }
 
+/* If image is ever added back */
 .tokenomics-image img {
   width: 100%;
+  max-width: 600px;
   height: auto;
   border-radius: 16px;
   border: 2px solid var(--gold);
+  display: block;
+  margin: 0 auto;
 }
+
+/* Responsive stacking on small screens */
+@media (max-width: 768px) {
+  .tokenomics-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 
 /* ===== HOW TO BUY SECTION ===== */
 .how-to-buy {
@@ -795,7 +820,7 @@ img {
 @media (max-width: 768px) {
   /* General mobile adjustments */
   .wrap {
-    padding: 16px 12px 40px;
+    padding: 16px 12px 40p;
   }
   
   /* Top bar mobile */
@@ -1212,4 +1237,34 @@ img {
   .stat {
     grid-column: auto;
   }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff0a;
+  border: 1px solid #ffffff1a;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.social-links a:hover {
+  
+  transform: translateY(-2px);
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* makes icons white */
 }
